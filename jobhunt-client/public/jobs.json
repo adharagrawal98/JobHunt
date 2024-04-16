@@ -6,9 +6,9 @@
       "companyLogo": "/images/Linear.png",
       "minPrice": "20",
       "maxPrice": "30",
-      "salaryType": "Yearly",
+      "salaryType": "Hourly",
       "jobLocation": "Brussels",
-      "postingDate": "2023-11-03",
+      "postingDate": "2024-04-03",
       "experienceLevel": "Any experience",
       "employmentType": "Full-time",
       "description": "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod eiusmod culpa. laborum tempor Lorem incididunt."
@@ -20,9 +20,9 @@
       "companyLogo": "/images/Notion.png",
       "minPrice": "40",
       "maxPrice": "50",
-      "salaryType": "Yearly",
+      "salaryType": "Hourly",
       "jobLocation": "San Francisco",
-      "postingDate": "2023-11-02",
+      "postingDate": "2024-04-02",
       "experienceLevel": "Internship",
       "employmentType": "Temporary",
       "description": "Mollit in laborum tempor Lorem incididunt irure. Aute eu ex ad sunt. Pariatur sint culpa do incididunt eiusmod eiusmod culpa. laborum tempor Lorem incididunt."
