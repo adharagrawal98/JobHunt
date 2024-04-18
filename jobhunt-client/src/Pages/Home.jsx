@@ -3,6 +3,7 @@ import Banner from '../components/Banner';
 import Card from '../components/Card';
 import Jobs from './Jobs';
 import Sidebar from '../sidebar/Sidebar';
+import NewsLetter from '../components/NewsLetter';
 
 const Home = () => {
   // State variables
@@ -72,17 +73,21 @@ const Home = () => {
     }
 
     if (selected) {
+      const selectedDate = new Date(selected).getTime(); // Convert selected to timestamp
+
       filteredJobs = filteredJobs.filter(
         ({ jobLocation, experienceLevel, employmentType, salaryType, maxPrice, postingDate }) => (
-          postingDate >= selected ||
+          new Date(postingDate).getTime() >= selectedDate || // Compare postingDate as timestamps
           jobLocation.toLowerCase() === selected.toLowerCase() ||
-          parseInt(maxPrice) <= parseInt(selected) ||
           experienceLevel.toLowerCase() === selected.toLowerCase() ||
           employmentType.toLowerCase() === selected.toLowerCase() ||
-          salaryType.toLowerCase() === selected.toLowerCase()
+          salaryType.toLowerCase() === selected.toLowerCase() ||
+          parseInt(maxPrice) <= parseInt(selected)
         )
       );
     }
+
+
 
     // Slice the data based on current page
     const { startIndex, endIndex } = calcPageRange();
@@ -125,7 +130,8 @@ const Home = () => {
               )}
             </div>
             {/* Right side */}
-            <div className="bg-white p-4 rounded">Right</div>
+            <div className="bg-white p-4 rounded"><NewsLetter /></div>
+            
           </div>
         </div>
       </div>

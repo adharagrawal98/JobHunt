@@ -23,13 +23,13 @@ const JobPostingData = ({handleInputChange}) => {
       <h4 className='text-lg font-medium mb-2'>Date of Posting</h4>
       <div>
         <label className='sidebar-label-container'>
-        <input  type="radio" name="test3" id="test3" value="" onChange={handleInputChange} />
+        <input  type="radio" name="test" id="test" value="" onChange={handleInputChange} />
         <span className="checkmark"></span>All Time
         </label>
           
-        <InputFields handleInputChange={handleInputChange} value={twentyFourHoursAgoDate} title="Last 24 Hours" name="test3"/>
-        <InputFields handleInputChange={handleInputChange} value={sevenDaysAgoDate} title="Last 7 Days" name="test3"/>
-        <InputFields handleInputChange={handleInputChange} value={thirtyDaysAgoDate} title="Last 30 Days" name="test3"/>
+        <InputFields handleInputChange={handleInputChange} value={twentyFourHoursAgoDate} title="Last 24 Hours" name="test"/>
+        <InputFields handleInputChange={handleInputChange} value={sevenDaysAgoDate} title="Last 7 Days" name="test"/>
+        <InputFields handleInputChange={handleInputChange} value={thirtyDaysAgoDate} title="Last 30 Days" name="test"/>
       </div>
     </div>
   )
