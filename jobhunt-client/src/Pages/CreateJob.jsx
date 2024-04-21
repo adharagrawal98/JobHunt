@@ -4,21 +4,45 @@ import CreatableSelect from 'react-select/creatable';
 
 const CreateJob = () => {
     const [selectedOption, setSelectedOption] = React.useState(null);
-    const options = [
-        { value: 'JavaScript', label: 'JavaScript' },
-        { value: 'Java', label: 'Java' }, { value: 'Python', label: 'Python' },
-        { value: 'C++', label: 'C++' }, { value: 'C', label: 'C' }, { value: 'PHP', label: 'PHP' }, { value: 'React', label: 'React' }, { value: 'Ruby', label: 'Ruby' },
-        { value: 'Swift', label: 'Swift' }, { value: 'Kotlin', label: 'Kotlin' }, { value: 'Go', label: 'Go' },
-    ]
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm()
 
+    const onSubmit = async (data) => {
+        data.skills = selectedOption;
+        fetch("http://localhost:3000/post-job", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        })
+        .then((res) => res.json())
+        .then((result) => {
+            console.log(result);
+            if(result.acknowledged) {
+                alert("Job Posted Successfully!");
+                 window.location.reload();
+            }
+        });
+    };
+    
+    const options = [
+        { value: 'JavaScript', label: 'JavaScript' },
+        { value: 'Java', label: 'Java' }, 
+        { value: 'Python', label: 'Python' },
+        { value: 'C++', label: 'C++' }, 
+        { value: 'C', label: 'C' }, 
+        { value: 'PHP', label: 'PHP' }, 
+        { value: 'React', label: 'React' }, 
+        { value: 'Ruby', label: 'Ruby' },
+        { value: 'Swift', label: 'Swift' }, 
+        { value: 'Kotlin', label: 'Kotlin' }, 
+        { value: 'Go', label: 'Go' },
+    ]
 
-
-    const onSubmit = (data) => console.log(data)
     return (
         <>
             <div className='max-w-screen-2xl container mx-auto xl:px-24 px-4'>
@@ -87,8 +111,6 @@ const CreateJob = () => {
                                 <select {...register("jobType")} className="create-job-input">
                                     <option value="Choose your job type">Choose the Experience level required! </option>
                                     <option value="Any Experience">Any Experience</option>
-                                    <option value="Internship">Internship</option>
-                                    <option value="Work-remotely">Work-remotely</option>
                                     <option value="2plusyears">2+ years</option>
                                     <option value="5plusyears">5+ years</option>
                                 </select>
@@ -133,7 +155,7 @@ const CreateJob = () => {
                         <label className='block mb-2 text-lg'>Job Posted By</label>
                         <input type="email" placeholder='Email' {...register("postedBy", { required: true })} className="create-job-input" />
                         </div> 
-                        <input type="submit" className="block mt-12 bg-blue text-white font-semibold px-8 py-2 rounded-sm cursor-pointer" />
+                        <button type="submit" className="block mt-12 bg-blue text-white font-semibold px-8 py-2 rounded-sm cursor-pointer">Submit</button>
                     </form>
                 </div>
 

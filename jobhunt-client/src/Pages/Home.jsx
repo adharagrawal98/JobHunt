@@ -17,7 +17,7 @@ const Home = () => {
   // Fetching data from API
   useEffect(() => {
     setIsLoading(true);
-    fetch("jobs.json")
+    fetch("http://localhost:3000/all-jobs")
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);
@@ -77,18 +77,15 @@ const Home = () => {
 
       filteredJobs = filteredJobs.filter(
         ({ jobLocation, experienceLevel, employmentType, salaryType, maxPrice, postingDate }) => (
-          new Date(postingDate).getTime() >= selectedDate || // Compare postingDate as timestamps
-          jobLocation.toLowerCase() === selected.toLowerCase() ||
-          experienceLevel.toLowerCase() === selected.toLowerCase() ||
-          employmentType.toLowerCase() === selected.toLowerCase() ||
-          salaryType.toLowerCase() === selected.toLowerCase() ||
-          parseInt(maxPrice) <= parseInt(selected)
+            new Date(postingDate)?.getTime() >= selectedDate || // Compare postingDate as timestamps
+            (jobLocation && jobLocation.toLowerCase() === selected.toLowerCase()) ||
+            (experienceLevel && experienceLevel.toLowerCase() === selected.toLowerCase()) ||
+            (employmentType && employmentType.toLowerCase() === selected.toLowerCase()) ||
+            (salaryType && salaryType.toLowerCase() === selected.toLowerCase()) ||
+            (maxPrice && parseInt(maxPrice) <= parseInt(selected))
         )
-      );
+    );
     }
-
-
-
     // Slice the data based on current page
     const { startIndex, endIndex } = calcPageRange();
     filteredJobs = filteredJobs.slice(startIndex, endIndex);
