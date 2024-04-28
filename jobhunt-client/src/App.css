@@ -16,7 +16,9 @@ a {
 li {
   list-style: none;
 }
-
+.hover\:pointer:hover {
+  cursor: pointer;
+}
 .btns {
   padding: 10px 20px;
   margin-right: 6px;

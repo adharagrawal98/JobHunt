@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CiEdit, CiTrash } from "react-icons/ci";
+import Alert from '../components/Alert';
 
 const MyJobs = () => {
     // const email = localStorage.getItem("email");
@@ -54,18 +55,20 @@ const MyJobs = () => {
     };
 
     const deleteJob = (id) => {
-        // const newJobs = jobs.filter((job) => job._id !== jobId);
-        // setJobs(newJobs);
-        fetch(`http://localhost:3000/job/${id}`, { method: "DELETE" }).then((res) => res.json).then((data) => {
-            if (data.acknowledged === true) {
-                alert("Job Deleted Successfully!");
-                window.location.reload();
-            }
-        }
-
-        );
+        fetch(`http://localhost:3000/job/${id}`, { method: "DELETE" })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.acknowledged === true) {
+                    
+                    // Filter out the deleted job from the current jobs state
+                    const updatedJobs = jobs.filter((job) => job._id !== id);
+                    setJobs(updatedJobs);
+                   alert("Your job has been deleted!");
+                }
+            })
+            .catch((error) => console.error("Error deleting job:", error));
     };
-
+    
     return (
         <>
             <div className='max-w-screen-2xl container mx-auto xl:px-24 px-4 md:py-20 py-14'>
@@ -119,9 +122,9 @@ const MyJobs = () => {
                                         <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                             Salary
                                         </th>
-                                        <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                        {/* <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                             Edit
-                                        </th>
+                                        </th> */}
                                         <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                             Delete
                                         </th>
@@ -145,9 +148,9 @@ const MyJobs = () => {
                                                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                     {job.minPrice} - {job.maxPrice}
                                                 </td>
-                                                <td className="border-t-0 px-6 align-middle text-xl text-bold border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {/* <td className="border-t-0 px-6 align-middle text-xl text-bold border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                     <button><Link to='/edit-job${job._id}'> <CiEdit /></Link></button>
-                                                </td>
+                                                </td> */}
                                                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                     <button onClick={() => { deleteJob(job._id) }} className="bg-red-700 py-2 px-6 text-white  text-lg text-bold rounded-sm"> <CiTrash /> </button>
                                                 </td>

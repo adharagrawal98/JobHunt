@@ -3,24 +3,32 @@ import App from "../App";
 import Home from "../Pages/Home";
 import CreateJob from "../Pages/CreateJob";
 import MyJobs from "../Pages/MyJobs";
-    const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <App/>,
-      children: [
-       { path: "/",
-        element: <Home/>,
+import Salary from "../Pages/Salary";
+import Login from "../components/auth/Login";
+import JobDetails from "../Pages/JobDetails";
+import SignUp from "../components/auth/SignUp";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+    children: [
+      { path: "/", element: <Home/> },
+      { path: "/post-job", element: <CreateJob/> },
+      { path: "/my-job", element: <MyJobs/> },
+      { path: "/salary", element: <Salary/> },
+      {
+        path: "/login", element: <Login/>
       },
       {
-        path: "/post-job",
-        element: <CreateJob/>,
+        path: "/sign-up", element: <SignUp/>
       },
-        {
-          path: "/my-job",
-          element: <MyJobs/>,
-        }
-      ],
-    },
-  ]);
+      {
+        path: "/job/:id", element: <JobDetails/>
+      },
+  
+    ],
+  },
+]);
 
-  export default router;
+export default router;

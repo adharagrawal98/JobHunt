@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import {FiCalendar, FiClock, FiMapPin} from 'react-icons/fi'
 import {FaPoundSign} from 'react-icons/fa'
 const Card = ({data}) => {
-    const {companyName, jobTitle, companyLogo, minPrice, maxPrice, salaryType, jobLocation, employmentType, postingDate, description} = data;
+    const {_id, companyName, jobTitle, companyLogo, minPrice, maxPrice, salaryType, jobLocation, employmentType, postingDate, description} = data;
     return (
     <>
     <section className="card">
-        <Link to={"/"} className= "flex gap-4 flex-col sm:flex-row items-start">
+        <Link to={`/job/${_id}`} className= "flex gap-4 flex-col sm:flex-row items-start">
             <img src={companyLogo} alt="" className='w-16 h-16' />
             <div>
                 <h4 className='text-primary mb-1'>{companyName}</h4>
