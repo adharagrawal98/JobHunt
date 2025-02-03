@@ -1,3 +1,9 @@
+📌 Secure Authentication & Enhanced Job Search
+
+	•	Implemented Google OAuth authentication for a secure and seamless login experience, protecting user data.
+	•	Users can efficiently filter job listings using five advanced filtering methods, ensuring personalized and relevant job opportunities.
+	•	Optimized back-end performance for faster job searches, reducing load times and improving overall user experience.
+
 The below screenshot is the Homepage of the JobPortal website. The user can use different filters to search job according to his need.
 
 <img width="1263" alt="Screenshot 2025-02-03 at 12 05 42 PM" src="https://github.com/user-attachments/assets/cb72e5b6-a6a0-48dc-b26b-2b644ee44bec" />
